@@ -29,5 +29,12 @@ public class MainFrame extends JFrame {
 
             }
         });
+
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 }
