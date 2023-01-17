@@ -6,8 +6,6 @@
             Class with GUI elements.
  */
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 public class MainFrame extends JFrame {
     private JTextField textField1;
     private JTextField textField2;
@@ -23,30 +21,24 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
         isLeapYearCheckBox.setEnabled(false);
-        OKButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String date = Calendar.getInput(textField1.getText());
-                if(date.contains(":")) {
-                    date = date.replace(":", "");
-                    isLeapYearCheckBox.setSelected(true);
-                }
-                textField2.setText(date);
-                textField1.setEditable(false);
-                OKButton.setEnabled(false);
-
+        OKButton.addActionListener(e -> {
+            String date = Calendar.getInput(textField1.getText());
+            if(date.contains(":")) {
+                date = date.replace(":", "");
+                isLeapYearCheckBox.setSelected(true);
             }
+            textField2.setText(date);
+            textField1.setEditable(false);
+            OKButton.setEnabled(false);
+
         });
 
-        clearButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                textField1.setText("");
-                textField2.setText("");
-                isLeapYearCheckBox.setSelected(false);
-                textField1.setEditable(true);
-                OKButton.setEnabled(true);
-            }
+        clearButton.addActionListener(e -> {
+            textField1.setText("");
+            textField2.setText("");
+            isLeapYearCheckBox.setSelected(false);
+            textField1.setEditable(true);
+            OKButton.setEnabled(true);
         });
     }
 }
