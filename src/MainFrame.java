@@ -19,7 +19,6 @@ public class MainFrame extends JFrame {
         setTitle("Calendar");
         setSize(350, 250);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setVisible(true);
         isLeapYearCheckBox.setEnabled(false);
         OKButton.addActionListener(e -> {
             String date = Calendar.getInput(textField1.getText());

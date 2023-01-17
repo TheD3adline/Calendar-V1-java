@@ -6,7 +6,6 @@
             Class with calendar specific methods und functions.
  */
 public class Calendar {
-
     private static final String[] months = {"January", "February", "March", "April", "May", "June", "July",
                                             "August", "September", "October", "November", "December"};
 
