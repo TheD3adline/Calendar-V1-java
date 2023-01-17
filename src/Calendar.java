@@ -7,22 +7,31 @@
  */
 public class Calendar {
 
-    private static String day;
-    private static String month;
-    private static String year;
     private static final String[] months = {"January", "February", "March", "April", "May", "June", "July",
                                             "August", "September", "October", "November", "December"};
 
     public static String getInput(String input) {
         String r = "Invalid Input";
-        if(input.length() == 10) {
+        StringBuilder outputFormat = new StringBuilder();
+        if(input.length() >= 7) {
             if(isNumeric(input.substring(0, 2)) && isNumeric(input.substring(3, 5)) &&
-                    isNumeric(input.substring(6))) {
+                    isNumeric(input.substring(6)) && ((input.charAt(2) == '.') && (input.charAt(5) == '.'))) {
                 int day = Integer.parseInt(input.substring(0, 2));
                 int month = Integer.parseInt(input.substring(3, 5));
                 int year = Integer.parseInt(input.substring(6));
                 if(dateIsValid(day, month, year)) {
-
+                    if(day < 10)
+                        outputFormat.append("0").append(day).append(".")
+                                    .append(months[month - 1]).append(".").append(year);
+                    else
+                        outputFormat.append(day).append(".").append(months[month - 1]).append(".").append(year);
+                    if(year < 0) {
+                        outputFormat.append(" B.C.");
+                    }
+                    if(isLeapYear(year))
+                        outputFormat.append(":");
+                    r = String.valueOf(outputFormat);
+                    r = r.replace("-", "");
                 }
             }
         }

@@ -22,10 +22,18 @@ public class MainFrame extends JFrame {
         setSize(350, 250);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
+        isLeapYearCheckBox.setEnabled(false);
         OKButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                String date = Calendar.getInput(textField1.getText());
+                if(date.contains(":")) {
+                    date = date.replace(":", "");
+                    isLeapYearCheckBox.setSelected(true);
+                }
+                textField2.setText(date);
+                textField1.setEditable(false);
+                OKButton.setEnabled(false);
 
             }
         });
@@ -33,7 +41,11 @@ public class MainFrame extends JFrame {
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                textField1.setText("");
+                textField2.setText("");
+                isLeapYearCheckBox.setSelected(false);
+                textField1.setEditable(true);
+                OKButton.setEnabled(true);
             }
         });
     }
